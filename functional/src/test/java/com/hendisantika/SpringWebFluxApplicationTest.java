@@ -80,4 +80,26 @@ class SpringWebFluxApplicationTests {
                 .expectBody(User.class)
                 .isEqualTo(user);
     }
+
+    @Test
+    public void saveTest() {
+        WebTestClient client = WebTestClient
+                .bindToRouterFunction(userRouter.save(userHandler))
+                .build();
+
+        User user = new User("Uchiha", "Sasuke");
+        user.setId("efgt-fght");
+
+        Mono<User> mono = Mono.just(user);
+        given(userMongoRepository.save(user))
+                .willReturn(mono);
+
+        client.post().uri("/users")
+                .accept(MediaType.APPLICATION_JSON)
+                .body(mono, User.class)
+                .exchange()
+                .expectStatus().isCreated()
+                .expectHeader()
+                .location("/efgt-fght");
+    }
 }
