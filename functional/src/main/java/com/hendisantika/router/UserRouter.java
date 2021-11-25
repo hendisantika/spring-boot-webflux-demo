@@ -28,4 +28,9 @@ public class UserRouter {
                 .and(accept(MediaType.APPLICATION_JSON)), userHandler::findAll);
     }
 
+    @Bean
+    public RouterFunction<ServerResponse> findById(UserHandler userHandler) {
+        return route(GET("/users/{id}")
+                .and(accept(MediaType.APPLICATION_JSON)), userHandler::findById);
+    }
 }
