@@ -11,6 +11,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 import java.util.Arrays;
 import java.util.List;
@@ -57,5 +58,26 @@ class SpringWebFluxApplicationTests {
                 .expectStatus().isOk()
                 .expectBodyList(User.class)
                 .isEqualTo(users);
+    }
+
+    @Test
+    public void findByIdTest() {
+        WebTestClient client = WebTestClient
+                .bindToRouterFunction(userRouter.findById(userHandler))
+                .build();
+
+        User user = new User("Uzumaki", "Naruto");
+        user.setId("efgt-fght");
+
+        Mono<User> mono = Mono.just(user);
+        given(userMongoRepository.findById("efgt-fght"))
+                .willReturn(mono);
+
+        client.get().uri("/users/efgt-fght")
+                .accept(MediaType.APPLICATION_JSON)
+                .exchange()
+                .expectStatus().isOk()
+                .expectBody(User.class)
+                .isEqualTo(user);
     }
 }
