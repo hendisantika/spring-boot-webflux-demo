@@ -12,8 +12,6 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 import org.springframework.web.util.UriComponentsBuilder;
 import reactor.core.publisher.Mono;
 
-import javax.xml.validation.ValidatorHandler;
-
 import static org.springframework.web.reactive.function.BodyInserters.fromValue;
 
 /**

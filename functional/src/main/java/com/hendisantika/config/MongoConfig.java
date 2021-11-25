@@ -1,6 +1,7 @@
 package com.hendisantika.config;
 
 import com.hendisantika.entity.User;
+import com.hendisantika.repository.UserRepository;
 import com.mongodb.reactivestreams.client.MongoClient;
 import com.mongodb.reactivestreams.client.MongoClients;
 import lombok.RequiredArgsConstructor;
@@ -42,7 +43,7 @@ public class MongoConfig extends AbstractReactiveMongoConfiguration {
     }
 
     @Bean
-    public CommandLineRunner insertData(UserMongoRepository userMongoRepository) {
+    public CommandLineRunner insertData(UserRepository userMongoRepository) {
         return args -> {
             userMongoRepository.save(new User("Vincenzo", "Racca")).subscribe();
             userMongoRepository.save(new User("Mario", "Rossi")).subscribe();
