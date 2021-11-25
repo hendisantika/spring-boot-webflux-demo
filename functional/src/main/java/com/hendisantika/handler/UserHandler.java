@@ -68,4 +68,9 @@ public class UserHandler {
 //                });
     }
 
+    public Mono<ServerResponse> delete(ServerRequest request) {
+        return userRepository.deleteById(request.pathVariable("id"))
+                .then(ServerResponse.noContent().build());
+    }
+
 }
