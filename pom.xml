@@ -22,7 +22,7 @@
 
     <modules>
         <module>functional</module>
-        <module>traditional</module>
+<!--        <module>traditional</module>-->
     </modules>
 
 </project>
