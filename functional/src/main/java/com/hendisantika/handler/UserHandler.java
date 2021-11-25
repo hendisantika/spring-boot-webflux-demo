@@ -43,4 +43,10 @@ public class UserHandler {
                     return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(fromValue(users));
                 });
     }
+
+    public Mono<ServerResponse> findById(ServerRequest request) {
+        return userRepository.findById(request.pathVariable("id"))
+                .flatMap(user -> ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(fromValue(user)))
+                .switchIfEmpty(ServerResponse.notFound().build());
+    }
 }
