@@ -8,6 +8,8 @@ import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
 import static org.springframework.web.reactive.function.server.RequestPredicates.GET;
+import static org.springframework.web.reactive.function.server.RequestPredicates.POST;
+import static org.springframework.web.reactive.function.server.RequestPredicates.PUT;
 import static org.springframework.web.reactive.function.server.RequestPredicates.accept;
 import static org.springframework.web.reactive.function.server.RouterFunctions.route;
 
@@ -32,5 +34,12 @@ public class UserRouter {
     public RouterFunction<ServerResponse> findById(UserHandler userHandler) {
         return route(GET("/users/{id}")
                 .and(accept(MediaType.APPLICATION_JSON)), userHandler::findById);
+    }
+
+    @Bean
+    public RouterFunction<ServerResponse> save(UserHandler userHandler) {
+        return route(POST("/users")
+                .or(PUT("/users"))
+                .and(accept(MediaType.APPLICATION_JSON)), userHandler::save);
     }
 }
