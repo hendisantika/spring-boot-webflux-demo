@@ -24,9 +24,4 @@
     </properties>
     <description>Demo project for Spring Boot Webflux</description>
 
-    <!--    <modules>-->
-    <!--        <module>functional</module>-->
-    <!--        <module>traditional</module>-->
-    <!--    </modules>-->
-
 </project>
