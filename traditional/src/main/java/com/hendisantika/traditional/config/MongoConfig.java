@@ -22,4 +22,8 @@ public class MongoConfig extends AbstractReactiveMongoConfiguration {
 
     private final Environment env;
 
+    @Override
+    protected String getDatabaseName() {
+        return "users";
+    }
 }
