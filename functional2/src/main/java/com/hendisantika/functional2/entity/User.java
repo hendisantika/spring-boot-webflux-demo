@@ -1,4 +1,4 @@
-package com.hendisantika.entity;
+package com.hendisantika.functional2.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

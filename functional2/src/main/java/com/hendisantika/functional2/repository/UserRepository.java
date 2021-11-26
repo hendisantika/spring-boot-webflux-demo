@@ -1,6 +1,6 @@
-package com.hendisantika.repository;
+package com.hendisantika.functional2.repository;
 
-import com.hendisantika.entity.User;
+import com.hendisantika.functional2.entity.User;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 
 /**

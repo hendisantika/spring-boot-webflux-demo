@@ -1,7 +1,7 @@
-package com.hendisantika.handler;
+package com.hendisantika.functional2.handler;
 
-import com.hendisantika.entity.User;
-import com.hendisantika.repository.UserRepository;
+import com.hendisantika.functional2.entity.User;
+import com.hendisantika.functional2.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

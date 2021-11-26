@@ -1,4 +1,4 @@
-package com.hendisantika.handler;
+package com.hendisantika.functional2.handler;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

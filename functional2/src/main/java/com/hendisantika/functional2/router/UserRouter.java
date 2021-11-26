@@ -1,6 +1,6 @@
-package com.hendisantika.router;
+package com.hendisantika.functional2.router;
 
-import com.hendisantika.handler.UserHandler;
+import com.hendisantika.functional2.handler.UserHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;

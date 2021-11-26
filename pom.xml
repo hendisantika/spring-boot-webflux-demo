@@ -6,6 +6,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>functional</module>
+        <module>traditional</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
