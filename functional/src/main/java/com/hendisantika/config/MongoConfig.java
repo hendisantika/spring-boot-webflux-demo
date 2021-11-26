@@ -1,11 +1,8 @@
 package com.hendisantika.config;
 
-import com.hendisantika.entity.User;
-import com.hendisantika.repository.UserRepository;
 import com.mongodb.reactivestreams.client.MongoClient;
 import com.mongodb.reactivestreams.client.MongoClients;
 import lombok.RequiredArgsConstructor;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
@@ -42,13 +39,5 @@ public class MongoConfig extends AbstractReactiveMongoConfiguration {
         return MongoClients.create(String.format("mongodb://localhost:%d", port));
     }
 
-    @Bean
-    public CommandLineRunner insertData(UserRepository userMongoRepository) {
-        return args -> {
-            userMongoRepository.save(new User("Vincenzo", "Racca")).subscribe();
-            userMongoRepository.save(new User("Mario", "Rossi")).subscribe();
-            userMongoRepository.save(new User("Gennaro", "Esposito")).subscribe();
-            userMongoRepository.save(new User("Diego", "della Lega")).subscribe();
-        };
-    }
+
 }
