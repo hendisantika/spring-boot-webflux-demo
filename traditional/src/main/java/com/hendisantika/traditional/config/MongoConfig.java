@@ -1,5 +1,7 @@
 package com.hendisantika.traditional.config;
 
+import com.hendisantika.traditional.entity.User;
+import com.hendisantika.traditional.repository.UserMongoRepository;
 import com.mongodb.reactivestreams.client.MongoClient;
 import com.mongodb.reactivestreams.client.MongoClients;
 import lombok.RequiredArgsConstructor;
