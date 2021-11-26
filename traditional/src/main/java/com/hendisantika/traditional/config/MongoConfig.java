@@ -1,7 +1,11 @@
 package com.hendisantika.traditional.config;
 
+import com.mongodb.reactivestreams.client.MongoClient;
+import com.mongodb.reactivestreams.client.MongoClients;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.DependsOn;
 import org.springframework.context.annotation.Profile;
 import org.springframework.core.env.Environment;
 import org.springframework.data.mongodb.config.AbstractReactiveMongoConfiguration;
@@ -25,5 +29,13 @@ public class MongoConfig extends AbstractReactiveMongoConfiguration {
     @Override
     protected String getDatabaseName() {
         return "users";
+    }
+
+    @Override
+    @Bean
+    @DependsOn("embeddedMongoServer")
+    public MongoClient reactiveMongoClient() {
+        var port = env.getProperty("local.mongo.port", Integer.class);
+        return MongoClients.create(String.format("mongodb://localhost:%d", port));
     }
 }
